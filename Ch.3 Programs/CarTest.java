@@ -75,4 +75,10 @@ public class CarTest
         gallons = testCar.getGasInTank();
         assertEquals(17.5, gallons, 1e-6);
     }
+
+    @Test
+    public void s()
+    {
+    }
 }
+
