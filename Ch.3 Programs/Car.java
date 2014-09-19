@@ -1,69 +1,56 @@
-
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 
 /**
- * The Car class models a car with a constant fuel efficiency and tracks 
- * how much fuel is left in the tank
- * 
- * @author nrmills 
- * @version 12 September 2014
+ * A car shape that can be positioned anywhere on the screen.
  */
 public class Car
 {
-    /** The fuel efficiency of this car measured in miles per gallon (mpg) */
-    private double fuelEfficiency;
-    
-    /** the fuel measured in gallons, left in this cars tank */
-    private double fuelInTank;
-    
-    
+    private int xLeft;
+    private int yTop;
     /**
-     * Constructor for Car that specifies fuel efficiency
+     * Constructs a car with a given top left corner.
+     * @param x the x-coordinate of the top-left corner
+     * @param y the y-coordinate of the top left corner
      */
-    
-    public Car(double efficiency)
+    public Car(int x, int y)
     {
-        this.fuelEfficiency = efficiency;
-        this.fuelInTank = 0;
+        xLeft = x;
+        yTop = y;
     }
-
     /**
-     * Adds the specified number in gallons of fuel to this car's tank.
-     *
-     * @pre        the specified number of gallons will not exceed this car's tank capacity
-     * 
-     * @param    gallons    the number of gallons of fuel to add to this cars tank
-     */ 
-
-    public void addGas(double gallons)
-    {
-        this.fuelInTank = this.fuelInTank + gallons;
-    }
-
-
-    /**
-     * Reduces the fuel in this car's tank based on this car's fuel efficiency
-     * and the specified number of miles driven.
-     *
-     * @pre     the specified number of miles will not consume more than the amount of fuel in this car's tank 
-     *
-     * @param   miles   the number of miles driven
+     * Draws the car
+     * @param g2 the graphics context
      */
-    
-    public void drive(double miles)
+    public void draw(Graphics2D g2)
     {
-        double gallonsBurned = miles / this.fuelEfficiency;
-        this.fuelInTank = this.fuelInTank - gallonsBurned;
+        Rectangle body = new Rectangle(xLeft, yTop + 10, 60, 10);
+        Ellipse2D.Double frontTire
+            = new Ellipse2D.Double(xLeft + 10, yTop + 20, 10, 10);
+        Ellipse2D.Double rearTire
+            = new Ellipse2D.Double(xLeft + 40, yTop +20, 10, 10);
+        
+        // The bottom of the front windshield
+        Point2D.Double r1 = new Point2D.Double(xLeft +10, yTop +10);
+        // The Front of the roof
+        Point2D.Double r2 = new Point2D.Double(xLeft + 20, yTop);
+        // The rear of the roof
+        Point2D.Double r3 = new Point2D.Double(xLeft + 40, yTop);
+        // The bottom of the rear windshield
+        Point2D.Double r4 = new Point2D.Double(xLeft + 50, yTop + 10);
+        
+        Line2D.Double frontWindshield = new Line2D.Double(r1, r2);
+        Line2D.Double roofTop = new Line2D.Double(r2, r3);
+        Line2D.Double rearWindshield = new Line2D.Double(r3, r4);
+        
+        g2.draw(body);
+        g2.draw(frontTire);
+        g2.draw(rearTire);
+        g2.draw(frontWindshield);
+        g2.draw(roofTop);
+        g2.draw(rearWindshield);
     }
-
-
-    /**
-     * Returns the number of gallons remaining in this car's tank.
-     *
-     * @Returns the number of gallons remaining in this car's tank.
-     */
-    public double getGasInTank()
-    {
-        return this.fuelInTank;
-    }
-
 }
