@@ -3,18 +3,23 @@ import java.awt.geom.Rectangle2D;
 import java.awt.Color;
 
 /**
- * Write a description of class Sky here.
+ * A rectangle shape that is portrayed to look like a continous sky
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Nic Mills
+ * @version 10/7/2014
  */
 public class Sky
 {
+    /** The Width of the rectangle shape that represents the sky*/
     private double width;
+    
+    /** The Height of the rectangle shape that represents the sky*/
     private double height;
 
     /**
      * Constructor for objects of class Sky
+     * @param initWidth The Width of the rectangle shape that represents the sky
+     * @param initHeight The Height of the rectangle shape that represents the sky
      */
     public Sky(double initWidth, double initHeight)
     {
@@ -23,10 +28,7 @@ public class Sky
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Draws the blue skybox
      */
     public void draw(Graphics2D g2)
     {

@@ -51,6 +51,10 @@ public class Moon
         boolean isFull = initIsFull;
     }
 
+    /**
+     * Draws a full moon shape filled with a color variant of yellow, then overlays the moon with a shadow
+     * based on the start and extent value passed in the constructor.
+     */
     public void draw(Graphics2D g2)
     {
         Ellipse2D.Double moon1 = new Ellipse2D.Double(topLeftX, topLeftY, width, height);

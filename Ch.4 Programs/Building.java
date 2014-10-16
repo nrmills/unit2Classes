@@ -71,13 +71,14 @@ public class Building
         g2.setColor(Color.GRAY);
         Rectangle2D outline = new Rectangle2D.Double(topLeftX,topLeftY,width,height);
         g2.draw(outline);
+        g2.setColor(Color.GRAY);
         g2.fill(outline);
         for (int y=0; y<numFloors; y+=1)
         {
             for (int x=0; x<windowsPerFloor; x+=1)
             {
                 Rectangle2D.Double window = new Rectangle2D.Double(topLeftX+12.5+(+shiftWindowX*x), topLeftY+25+(shiftWindowY*y),
-                        width/windowsPerFloor-25, (height/numFloors)-25);
+                        width/windowsPerFloor-25, (height/numFloors)-20);
                 Random generator = new Random();
                 randNum = generator.nextInt(2);
                 if (randNum == 1)
