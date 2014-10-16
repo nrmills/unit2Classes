@@ -43,7 +43,8 @@ public class Landscape
      */
     public void draw(Graphics2D g2)
     {
-        g2.setColor(Color.GREEN);
+        Color landColor = new Color(51,102,0);
+        g2.setColor(landColor);
         Ellipse2D.Double horizon = new Ellipse2D.Double(topLeftX,topLeftY,width,height);
         g2.draw(horizon);
         g2.fill(horizon);

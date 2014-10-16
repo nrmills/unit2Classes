@@ -32,7 +32,8 @@ public class Sky
      */
     public void draw(Graphics2D g2)
     {
-        g2.setColor(Color.BLUE);
+        Color skyColor = new Color(0,51,102);
+        g2.setColor(skyColor);
         Rectangle2D.Double skybox = new Rectangle2D.Double(0,0,width,height);
         g2.draw(skybox);
         g2.fill(skybox);
